@@ -1,18 +1,37 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div>
+    <section>
+      <HeaderSection @input="getInput" />
+      <MainSection :newTask="newTask" />
+      <FooterSection />
+    </section>
+    <FooterInfo />
   </div>
 </template>
-
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import HeaderSection from "@/components/HeaderSection.vue";
+import MainSection from "@/components/MainSection.vue";
+import FooterInfo from "@/components/FooterInfo.vue";
+import FooterSection from "@/components/FooterSection.vue";
 
 export default {
-  name: "Home",
+  name: "home",
   components: {
-    HelloWorld
+    HeaderSection,
+    MainSection,
+    FooterInfo,
+    FooterSection
+  },
+  data: function() {
+    return {
+      newTask: ""
+    };
+  },
+  methods: {
+    getInput: function(value) {
+      this.newTask = value;
+    }
   }
 };
 </script>
+<style scoped></style>
