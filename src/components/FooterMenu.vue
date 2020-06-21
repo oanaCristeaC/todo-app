@@ -1,10 +1,6 @@
 <template>
   <ul class="filers">
-    <MenuElement
-      v-for="item in items"
-      :key="item.index"
-      v-bind:menuItem="item"
-    />
+    <MenuElement v-for="item in items" :key="item.index" :menuItem="item" />
   </ul>
 </template>
 <script>
@@ -23,11 +19,20 @@ export default {
 };
 </script>
 <style scoped>
-ul {
+#filers {
   margin: 0;
   padding: 0;
   list-style: none;
   right: 0;
   left: 0;
+  list-style: none;
+  list-style-position: initial;
+  list-style-image: initial;
+  list-style-type: none;
+  position: absolute;
+}
+
+ul {
+  display: inline;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <li class="todo">
+  <li class="todo" :class="{ completed }" @click="toComplete">
     <div class="view">
       <input type="checkbox" class="toggle" />
       <label for="toggle">{{ task }}</label>
@@ -13,6 +13,17 @@ export default {
   props: {
     task: {
       type: String
+    }
+  },
+  data: function() {
+    return {
+      completed: false
+    };
+  },
+  methods: {
+    toComplete: function() {
+      console.log(this.task)
+      this.completed = !this.completed;
     }
   }
 };
@@ -67,6 +78,20 @@ li label {
 
 li .toggle {
   background-image: url("../assets/img/unchecked-box.svg");
+  background-repeat: no-repeat;
+  background-position: center left;
+}
+
+li.completed label {
+  color: #d9d9d9;
+  text-decoration: line-through;
+  text-decoration-line: line-through;
+  text-decoration-style: initial;
+  text-decoration-color: initial;
+}
+
+li.completed .toggle {
+  background-image: url("../assets/img/checked-box.svg");
   background-repeat: no-repeat;
   background-position: center left;
 }

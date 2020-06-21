@@ -1,15 +1,26 @@
 <template>
-  <li :class="{ active: selected }" id="filered">{{ menuItem }}</li>
+  <li :class="{ selected }" id="filered" @click="toAction">
+    <a href="#" >{{ menuItem }}</a>
+  </li>
 </template>
 <script>
 export default {
   name: "menu-element",
   props: {
-    menuItem: String,
-    selected: Boolean
+    menuItem: {
+      type: String
+    },
+    selected: {
+      type: Boolean
+    }
   },
   data: function() {
     return {};
+  },
+  methods: {
+    toAction: function() {
+      console.log(this.menuItem)
+    }
   }
 };
 </script>
@@ -17,5 +28,18 @@ export default {
 #filered {
   display: inline;
   padding: 0 5px;
+}
+
+a {
+  color: inherit;
+  margin: 3px;
+  padding: 3px 7px;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: 3px;
+}
+
+a.active {
+  border-color: rgba(175, 47, 47, 0.2)
 }
 </style>
