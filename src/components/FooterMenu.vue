@@ -1,6 +1,11 @@
 <template>
   <ul class="filers">
-    <MenuElement v-for="item in items" :key="item.index" :menuItem="item" />
+    <MenuElement
+      v-for="item in items"
+      :key="item.index"
+      :menuItem="item"
+      @show="showTodos"
+    />
   </ul>
 </template>
 <script>
@@ -15,6 +20,30 @@ export default {
     return {
       items: ["All", "Active", "Completed"]
     };
+  },
+  methods: {
+    showTodos: function(menuItem) {
+      switch (menuItem) {
+        case "Active":
+          this.displayActive();
+          return;
+        case "Completed":
+          this.displayCompleted();
+          return;
+        default:
+          this.displayAll();
+      }
+    },
+
+    displayAll() {
+      console.log("display all elements");
+    },
+    displayActive() {
+      console.log("display active");
+    },
+    displayCompleted() {
+      console.log("display completed");
+    }
   }
 };
 </script>

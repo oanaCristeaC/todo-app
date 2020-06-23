@@ -1,5 +1,5 @@
 <template>
-  <li :class="{ selected }" id="filered" @click="toAction">
+  <li :class="{ selected }" id="filered" @click="$emit('show', menuItem)">
     <a href="#" >{{ menuItem }}</a>
   </li>
 </template>
@@ -17,11 +17,7 @@ export default {
   data: function() {
     return {};
   },
-  methods: {
-    toAction: function() {
-      console.log(this.menuItem)
-    }
-  }
+  methods: {}
 };
 </script>
 <style scopend>

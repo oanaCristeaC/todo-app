@@ -2,7 +2,7 @@
   <li class="todo" :class="{ completed }" @click="toComplete">
     <div class="view">
       <input type="checkbox" class="toggle" />
-      <label for="toggle">{{ task }}</label>
+      <label for="toggle">{{ task.title }}</label>
       <button class="destroy"></button>
     </div>
   </li>
@@ -12,18 +12,24 @@ export default {
   name: "todo",
   props: {
     task: {
-      type: String
+      type: Object
     }
   },
   data: function() {
-    return {
-      completed: false
-    };
+    return {};
   },
+  computed: {
+    completed: function() {
+      return this.task.completed;
+    }
+  },
+
   methods: {
     toComplete: function() {
-      console.log(this.task)
-      this.completed = !this.completed;
+      this.$emit("setComplete", this.task);
+    },
+    getCompleted: function() {
+      return this.task.completed;
     }
   }
 };

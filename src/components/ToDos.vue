@@ -1,6 +1,11 @@
 <template>
   <ul class="todo-list">
-    <ToDos v-for="todo in todos" :key="todo" :task="todo" />
+    <ToDos
+      v-for="todo in todos"
+      :key="todo.id"
+      :task="todo"
+      @setComplete="setComplete"
+    />
   </ul>
 </template>
 <script>
@@ -16,7 +21,11 @@ export default {
       type: Array
     }
   },
-  methods: {}
+  methods: {
+    setComplete: function(task) {
+      this.$emit('setComplete', task)
+    }
+  }
 };
 </script>
 <style scoped>

@@ -2,11 +2,12 @@
   <section class="main-section">
     <input id="toggle-all" type="checkbox" class="toggle-all" />
     <label for="toggle-all"></label>
-    <ToDos :todos="tasks" />
+    <ToDos :todos="tasks" @setComplete="completeTask" />
   </section>
 </template>
 <script>
 import ToDos from "@/components/ToDos.vue";
+import todoStorage from "@/helpers.js"
 
 export default {
   name: "main-section",
@@ -20,17 +21,33 @@ export default {
   },
   data: function() {
     return {
-      tasks: []
+      tasks: todoStorage.fetch()
     };
   },
   methods: {
-    createTodo: function() {
-      this.tasks.push(this.newTask);
+    addTodo: function() {
+      const title = this.newTask && this.newTask.trim();
+
+      const task = {
+        title,
+        id: todoStorage.id++,
+        completed: false
+      }
+
+      this.tasks.push(task);
+      todoStorage.save(this.tasks)
+      
+    },
+    completeTask: function(newTask) {
+
+      const indexTask = this.tasks.findIndex(task => task.id === newTask.id); // Could also be just newtask.id
+      this.tasks[indexTask].completed = !this.tasks[indexTask].completed;
+      todoStorage.save(this.tasks)
     }
   },
   watch: {
     newTask: function() {
-      this.createTodo();
+      this.addTodo();
     }
   }
 };
