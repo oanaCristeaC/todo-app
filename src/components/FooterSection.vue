@@ -1,16 +1,23 @@
 <template>
   <footer class="footer-section">
-    <span class="todo-count">2 items left</span>
+    <span class="todo-count">{{ message }}</span>
     <FooterMenu />
   </footer>
 </template>
 <script>
 import FooterMenu from "@/components/FooterMenu.vue";
+import todoStorage from "@/helpers.js";
 
 export default {
   name: "footer-section",
   components: {
     FooterMenu
+  },
+  computed: {
+    message: function() {
+      const noTasks = todoStorage.fetch().filter(task => !task.completed).length;
+      return noTasks === 1 ? `${noTasks} item` : `${noTasks} items ` + "left";
+    }
   }
 };
 </script>
