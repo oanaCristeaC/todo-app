@@ -2,12 +2,12 @@
   <section class="main-section">
     <input id="toggle-all" type="checkbox" class="toggle-all" />
     <label for="toggle-all"></label>
-    <ToDos :todos="tasks" @setComplete="completeTask" />
+    <ToDos :todos="filteredTasks" @setComplete="completeTask" />
   </section>
 </template>
 <script>
 import ToDos from "@/components/ToDos.vue";
-import todoStorage from "@/helpers.js"
+import todoStorage from "@/helpers.js";
 
 export default {
   name: "main-section",
@@ -24,6 +24,24 @@ export default {
       tasks: todoStorage.fetch()
     };
   },
+  computed: {
+    filteredTasks: function() {
+      const typeOfTasks = window.location.pathname.split("/")[1];
+      const todos = this.tasks;
+      const filter = {
+        all: function(todos) {
+          return todos;
+        },
+        active: function(todos) {
+          return todos.filter(task => !task.completed);
+        },
+        completed: function(todos) {
+          return todos.filter(task => task.completed);
+        }
+      };
+      return filter[typeOfTasks](todos);
+    }
+  },
   methods: {
     addTodo: function() {
       const title = this.newTask && this.newTask.trim();
@@ -32,17 +50,15 @@ export default {
         title,
         id: todoStorage.id++,
         completed: false
-      }
+      };
 
       this.tasks.push(task);
-      todoStorage.save(this.tasks)
-      
+      todoStorage.save(this.tasks);
     },
     completeTask: function(newTask) {
-
       const indexTask = this.tasks.findIndex(task => task.id === newTask.id); // Could also be just newtask.id
       this.tasks[indexTask].completed = !this.tasks[indexTask].completed;
-      todoStorage.save(this.tasks)
+      todoStorage.save(this.tasks);
     }
   },
   watch: {
