@@ -36,13 +36,13 @@ export default {
     },
 
     displayAll() {
-      console.log("display all elements");
+      window.location.href = window.location.origin + "/all";
     },
     displayActive() {
-      console.log("display active");
+      window.location.href = window.location.origin + "/active";
     },
     displayCompleted() {
-      console.log("display completed");
+      window.location.href = window.location.origin + "/completed";
     }
   }
 };
