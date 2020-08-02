@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="1"
+            failures="0"
+            tests="1">
+
+  <testsuite name="test"
+    errors="1" failures="0" hostname="" id="" package="test" skipped="1"
+    tests="1" time="0.002000" timestamp="">
+  
+    <testcase name="default e2e tests" classname="test" time="0.002000" assertions="0">
+    <error message="sleep(...).url is not a function" type="error"><![CDATA[
+    TypeError: sleep(...).url is not a function
+    at Object.default e2e tests (/home/ionela/Desktop/apps/personal-projects/todo-app/tests/e2e/specs/test.js:10:23)
+    at Context.call (/home/ionela/Desktop/apps/personal-projects/todo-app/node_modules/nightwatch/lib/testsuite/context.js:379:35)
+    at TestCase.run (/home/ionela/Desktop/apps/personal-projects/todo-app/node_modules/nightwatch/lib/testsuite/testcase.js:49:31)
+    at Runnable.__runFn (/home/ionela/Desktop/apps/personal-projects/todo-app/node_modules/nightwatch/lib/testsuite/index.js:376:80)
+    at Runnable.run (/home/ionela/Desktop/apps/personal-projects/todo-app/node_modules/nightwatch/lib/testsuite/runnable.js:123:21)
+    at TestSuite.createRunnable (/home/ionela/Desktop/apps/personal-projects/todo-app/node_modules/nightwatch/lib/testsuite/index.js:443:33)
+    at TestSuite.handleRunnable (/home/ionela/Desktop/apps/personal-projects/todo-app/node_modules/nightwatch/lib/testsuite/index.js:448:18)
+    at /home/ionela/Desktop/apps/personal-projects/todo-app/node_modules/nightwatch/lib/testsuite/index.js:376:21
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    at async DefaultRunner.runTestSuite (/home/ionela/Desktop/apps/personal-projects/todo-app/node_modules/nightwatch/lib/runner/test-runners/default.js:68:7)
+    ]]></error>
+    
+    </testcase>
+  
+
+  
+    <system-err>
+        TypeError: sleep(...).url is not a function
+   - writing an ES6 async test case? - keep in mind that commands return a Promise; 
+   - writing unit tests? - make sure to specify &#34;unit_tests_mode=true&#34; in your config.
+       at Object.default e2e tests (/home/ionela/Desktop/apps/personal-projects/todo-app/tests/e2e/specs/test.js:10:23)
+       at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    </system-err>
+  
+
+    
+
+  
+    
+    <testcase
+      name="example e2e test using a custom command" classname="test">
+      <skipped />
+    </testcase>
+    
+  
+  </testsuite>
+</testsuites>

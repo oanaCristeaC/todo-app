@@ -7,7 +7,7 @@
 </template>
 <script>
 import ToDos from "@/components/ToDos.vue";
-import todoStorage from "@/helpers.js";
+import { todoStorage } from "@/helpers.js";
 
 export default {
   name: "main-section",

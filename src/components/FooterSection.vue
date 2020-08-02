@@ -6,7 +6,7 @@
 </template>
 <script>
 import FooterMenu from "@/components/FooterMenu.vue";
-import todoStorage from "@/helpers.js";
+import { todoStorage } from "@/helpers.js";
 
 export default {
   name: "footer-section",
